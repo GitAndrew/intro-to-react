@@ -1,7 +1,7 @@
 class App extends React.Component {
   render() {
-    return React.createElement("div", null, "Hello World!");
+    return <div>Hello World!</div>;
   }
 }
 
-ReactDOM.render(React.createElement(App), document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
