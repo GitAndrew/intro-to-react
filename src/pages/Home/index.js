@@ -1,14 +1,24 @@
 import React from "react";
-import { Card } from "components";
+import { Card, Search } from "components";
 import logo from "images/logo.png";
-import { Header, Title, LogoContainer, Logo, Content } from "./styles";
+import {
+  MainContainer,
+  Header,
+  Title,
+  LogoContainer,
+  Logo,
+  Content,
+  SearchContainer,
+} from "./styles";
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       movies: [],
       loading: false,
+      searchFilter: "",
     };
+    // this.searchFilterOnChange = this.searchFilterOnChange.bind(this);
   }
 
   componentDidMount() {
@@ -45,20 +55,38 @@ class Home extends React.Component {
     })();
   }
 
+  // Use an arrow function instead of a regular function to avoid having to bind the this keyword
+  searchFilterOnChange = (event) => {
+    this.setState({
+      searchFilter: event.target.value,
+    });
+  };
+
   render() {
+    const filteredMovies = this.state.movies.filter((movie) =>
+      movie.title.toLowerCase().includes(this.state.searchFilter.toLowerCase())
+    );
+
     return (
-      <div>
+      <MainContainer>
         <Header>
           <Title>Studio Ghibli Movie Watchlist</Title>
           <LogoContainer>
             <Logo src={logo} />
           </LogoContainer>
         </Header>
+        <SearchContainer>
+          <Search
+            value={this.state.searchFilter}
+            onChange={this.searchFilterOnChange}
+            placeholder={"Search Movies"}
+          />
+        </SearchContainer>
         <Content>
           {this.state.loading ? (
             <div>Loading</div>
           ) : (
-            this.state.movies.map((movie) => (
+            filteredMovies.map((movie) => (
               <Card
                 key={movie.id}
                 title={movie.title}
@@ -67,7 +95,7 @@ class Home extends React.Component {
             ))
           )}
         </Content>
-      </div>
+      </MainContainer>
     );
   }
 }

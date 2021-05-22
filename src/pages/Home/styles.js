@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Header = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -39,4 +44,9 @@ export const Content = styled.div`
   align-items: flex-start;
   justify-content: center;
   margin: 50px;
+`;
+
+export const SearchContainer = styled.div`
+  margin-top: 50px;
+  align-self: center;
 `;
