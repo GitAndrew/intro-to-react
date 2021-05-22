@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "components";
-
+import logo from "images/logo.png";
+import { Header, Title, LogoContainer, Logo, Content } from "./styles";
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -47,18 +48,25 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <div>Home Page</div>
-        {this.state.loading ? (
-          <div>Loading</div>
-        ) : (
-          this.state.movies.map((movie) => (
-            <Card
-              key={movie.id}
-              title={movie.title}
-              description={movie.description}
-            />
-          ))
-        )}
+        <Header>
+          <Title>Studio Ghibli Movie Watchlist</Title>
+          <LogoContainer>
+            <Logo src={logo} />
+          </LogoContainer>
+        </Header>
+        <Content>
+          {this.state.loading ? (
+            <div>Loading</div>
+          ) : (
+            this.state.movies.map((movie) => (
+              <Card
+                key={movie.id}
+                title={movie.title}
+                description={movie.description}
+              />
+            ))
+          )}
+        </Content>
       </div>
     );
   }
