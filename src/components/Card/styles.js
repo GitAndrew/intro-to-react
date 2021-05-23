@@ -7,12 +7,12 @@ export const MainContainer = styled.div`
   justify-content: flex-end;
   width: 300px;
   height: 420px;
-  border: 1px solid #decbb7;
+  border: 1px solid ${({ theme }) => theme.background.primary};
   font-family: "Work Sans", sans-serif;
   transition: 0.3s ease;
   :hover {
     transform: ${({ seen }) => (seen ? "none" : "scale(1.1)")};
-    border: 1px solid #292f36;
+    border: 1px solid ${({ theme }) => theme.content.border};
     box-shadow: ${({ seen }) =>
       seen ? "none" : "2px 5px 10px rgba(0, 0, 0, 0.5)"};
   }
@@ -29,8 +29,8 @@ export const TitleContainer = styled.div`
   justify-content: center;
   padding: 10px 0px;
   width: 100%;
-  color: white;
-  background: #182425;
+  color: ${({ theme }) => theme.text.primary};
+  background: ${({ theme }) => theme.content.primary};
   text-transform: uppercase;
 `;
 
@@ -38,8 +38,8 @@ export const SubtitleContainer = styled.div`
   height: ${({ hover }) => (hover ? "120px" : "0px")};
   transition: 0.3s ease;
   width: 100%;
-  color: white;
-  background: #1e2d2f;
+  color: ${({ theme }) => theme.text.primary};
+  background: ${({ theme }) => theme.content.secondary};
   align-items: center;
   overflow: hidden;
 `;
@@ -64,10 +64,10 @@ export const NavContainer = styled.div`
 export const Button = styled.button`
   text-transform: uppercase;
   height: 100%;
-  background: #1e2d2f;
+  background: ${({ theme }) => theme.content.secondary};
   border-style: none;
   cursor: pointer;
-  color: #decbb7;
+  color: ${({ theme }) => theme.background.primary};
   margin: 10px;
   padding: 0px;
   user-select: none;

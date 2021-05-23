@@ -30,13 +30,13 @@ export const DetailsContainer = styled.div`
 `;
 
 export const DirectedBy = styled.div`
-  color: #716844;
-  border-bottom: 1px solid #716844;
+  color: ${({ theme }) => theme.header.primary};
+  border-bottom: 1px solid ${({ theme }) => theme.header.primary};
   margin-bottom: 10px;
 `;
 
 export const Description = styled.div`
   font-size: 2rem;
-  color: #716844;
+  color: ${({ theme }) => theme.header.primary};
   margin-bottom: 10px;
 `;

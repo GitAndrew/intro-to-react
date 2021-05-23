@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HeaderContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  background: #716844;
+  background: ${({ theme }) => theme.header.primary};
   width: 100%;
 `;
 
@@ -18,13 +18,13 @@ export const Button = styled.button`
   text-transform: uppercase;
   border-style: none;
   cursor: pointer;
-  background: #1e2d2f;
-  border: 1px solid #ede6cb;
-  color: #ede6cb;
+  background: ${({ theme }) => theme.content.secondary};
+  border: 1px solid ${({ theme }) => theme.text.secondary};
+  color: ${({ theme }) => theme.text.secondary};
   :hover {
-    background: #716844;
-    border: 1px solid #ede6cb;
-    color: #ede6cb;
+    background: ${({ theme }) => theme.header.primary};
+    border: 1px solid ${({ theme }) => theme.text.primary};
+    color: ${({ theme }) => theme.text.primary};
   }
   margin: 0px 0px 10px 50px;
   padding: 10px;
@@ -41,7 +41,7 @@ export const TitleContainer = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 48px;
-  color: #ede6cb;
+  color: ${({ theme }) => theme.text.secondary};
   padding: 50px 0px;
 `;
 
