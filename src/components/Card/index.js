@@ -47,7 +47,9 @@ const Card = ({
           <i>{description}</i>
         </SubtitleText>
         <NavContainer>
-          <Button onClick={toggleSeen}>Mark as Seen</Button>
+          <Button onClick={toggleSeen}>
+            {seen ? "Unmark as Seen" : "Mark as Seen"}
+          </Button>
           <Button>Read More &gt;</Button>
         </NavContainer>
       </SubtitleContainer>
