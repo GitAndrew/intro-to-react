@@ -33,7 +33,7 @@ const Movie = () => {
       }
       setLoading(false);
     })();
-  }, []);
+  }, [id]);
 
   return (
     <MainContainer>
