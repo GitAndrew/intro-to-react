@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Card, Search } from "components";
-import logo from "images/logo.png";
+import { Card, Search, Header } from "components";
 import {
   MainContainer,
-  Header,
-  Title,
-  LogoContainer,
-  Logo,
   Content,
   SearchContainer,
   CheckboxContainer,
@@ -55,12 +50,7 @@ const Home = () => {
 
   return (
     <MainContainer>
-      <Header>
-        <Title>Studio Ghibli Movie Watchlist</Title>
-        <LogoContainer>
-          <Logo src={logo} />
-        </LogoContainer>
-      </Header>
+      <Header hideButton titleContent="Studio Ghibli Movie Watchlist" />
       <SearchContainer>
         <Search
           value={searchFilter}

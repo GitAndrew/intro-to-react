@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   MainContainer,
-  HeaderContainer,
-  ButtonContainer,
-  Button,
-  TitleContainer,
-  LogoContainer,
-  Logo,
   ContentContainer,
   ImageContainer,
   Image,
@@ -14,14 +8,13 @@ import {
   DirectedBy,
   Description,
 } from "./styles";
-import logo from "images/logo.png";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Header } from "components";
 
 const Movie = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  const history = useHistory();
 
   useEffect(() => {
     (async () => {
@@ -37,30 +30,18 @@ const Movie = () => {
 
   return (
     <MainContainer>
-      <HeaderContainer>
-        <ButtonContainer>
-          <Button
-            onClick={() => {
-              history.push("/");
-            }}
-          >
-            View All Movies
-          </Button>
-        </ButtonContainer>
-        <TitleContainer>
-          {!loading && movie ? (
+      <Header
+        titleContent={
+          !loading && movie ? (
             <>
               <div style={{ opacity: 0.4 }}>{movie.original_title}</div>
               <div>{movie.title}</div>
             </>
           ) : (
             !loading && !movie && <div>Movie Not Found</div>
-          )}
-        </TitleContainer>
-        <LogoContainer>
-          <Logo src={logo} />
-        </LogoContainer>
-      </HeaderContainer>
+          )
+        }
+      />
       <ContentContainer>
         {loading ? (
           <div>Loading</div>

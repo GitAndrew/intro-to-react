@@ -12,29 +12,6 @@ export const Header = styled.div`
   width: 100%;
 `;
 
-export const Title = styled.div`
-  grid-column-start: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-  color: #ede6cb;
-  padding: 30px;
-`;
-
-export const LogoContainer = styled.div`
-  grid-column-start: 3;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin: 20px 20px 20px 0px;
-`;
-
-export const Logo = styled.img`
-  height: 100px;
-  opacity: 0.5;
-`;
-
 export const Content = styled.div`
   display: grid;
   grid-template-rows: auto;
