@@ -1,12 +1,7 @@
 import React from "react";
-import { Home, Movie } from "pages";
+import { Home, Movie, NotFound } from "pages";
 import GlobalStyle from "./globalStyles";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const App = () => {
   return (
@@ -16,7 +11,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/movies/:id" component={Movie} />
-          <Redirect to="/" />
+          <Route component={NotFound} />
         </Switch>
       </Router>
     </>
