@@ -9,14 +9,16 @@ import {
 } from "./styles";
 
 const Card = ({
+  id,
   originalTitle,
   title,
   description,
   releaseDate,
   backgroundImage,
+  seen,
+  toggleSeen,
 }) => {
   const [hover, setHover] = useState(false);
-  const [seen, setSeen] = useState(false);
 
   const onMouseEnter = () => {
     setHover(true);
@@ -24,10 +26,6 @@ const Card = ({
 
   const onMouseLeave = () => {
     setHover(false);
-  };
-
-  const toggleSeen = () => {
-    setSeen(!seen);
   };
 
   return (
@@ -47,7 +45,7 @@ const Card = ({
           <i>{description}</i>
         </SubtitleText>
         <NavContainer>
-          <Button onClick={toggleSeen}>Mark as Seen</Button>
+          <Button onClick={() => toggleSeen(id)}>Mark as Seen</Button>
           <Button>Read More &gt;</Button>
         </NavContainer>
       </SubtitleContainer>

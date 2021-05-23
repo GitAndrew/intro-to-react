@@ -9,11 +9,14 @@ import {
   Logo,
   Content,
   SearchContainer,
+  CheckboxContainer,
 } from "./styles";
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchFilter, setSearchFilter] = useState("");
+  const [seenMovies, setSeenMovies] = useState([]);
+  const [hideSeen, setHideSeen] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -32,8 +35,23 @@ const Home = () => {
   };
 
   const filteredMovies = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(searchFilter.toLowerCase())
+    hideSeen
+      ? !seenMovies.includes(movie.id) &&
+        movie.title.toLowerCase().includes(searchFilter.toLowerCase())
+      : movie.title.toLowerCase().includes(searchFilter.toLowerCase())
   );
+
+  const toggleSeen = (id) => {
+    if (seenMovies.includes(id)) {
+      setSeenMovies(seenMovies.filter((movieId) => movieId !== id));
+    } else {
+      setSeenMovies(seenMovies.concat(id));
+    }
+  };
+
+  const toggleHideSeen = () => {
+    setHideSeen(!hideSeen);
+  };
 
   return (
     <MainContainer>
@@ -49,6 +67,15 @@ const Home = () => {
           onChange={searchFilterOnChange}
           placeholder={"Search Movies"}
         />
+        <CheckboxContainer>
+          <input
+            style={{ transform: "scale(1.5)", marginRight: 10 }}
+            type="checkbox"
+            onChange={toggleHideSeen}
+            checked={hideSeen}
+          />
+          <label>Hide Seen Movies</label>
+        </CheckboxContainer>
       </SearchContainer>
       <Content>
         {loading ? (
@@ -57,11 +84,14 @@ const Home = () => {
           filteredMovies.map((movie) => (
             <Card
               key={movie.id}
+              id={movie.id}
               originalTitle={movie.original_title}
               title={movie.title}
               description={movie.description}
               releaseDate={movie.release_date}
               backgroundImage={movie.cover}
+              seen={seenMovies.includes(movie.id)}
+              toggleSeen={toggleSeen}
             />
           ))
         )}
