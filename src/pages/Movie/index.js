@@ -15,15 +15,18 @@ import {
   Description,
 } from "./styles";
 import logo from "images/logo.png";
+import { useParams, useHistory } from "react-router-dom";
 
 const Movie = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     (async () => {
       setLoading(true);
-      const response = await fetch(`http://localhost:9000/movies/1`);
+      const response = await fetch(`http://localhost:9000/movies/${id}`);
       if (response.status === 200) {
         const movie = await response.json();
         setMovie(movie);
@@ -36,7 +39,13 @@ const Movie = () => {
     <MainContainer>
       <HeaderContainer>
         <ButtonContainer>
-          <Button>View All Movies</Button>
+          <Button
+            onClick={() => {
+              history.push("/");
+            }}
+          >
+            View All Movies
+          </Button>
         </ButtonContainer>
         <TitleContainer>
           {!loading && movie ? (

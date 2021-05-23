@@ -7,6 +7,7 @@ import {
   NavContainer,
   Button,
 } from "./styles";
+import { useHistory } from "react-router-dom";
 
 const Card = ({
   id,
@@ -19,6 +20,7 @@ const Card = ({
   toggleSeen,
 }) => {
   const [hover, setHover] = useState(false);
+  const history = useHistory();
 
   const onMouseEnter = () => {
     setHover(true);
@@ -46,7 +48,13 @@ const Card = ({
         </SubtitleText>
         <NavContainer>
           <Button onClick={() => toggleSeen(id)}>Mark as Seen</Button>
-          <Button>Read More &gt;</Button>
+          <Button
+            onClick={() => {
+              history.push(`/movies/${id}`);
+            }}
+          >
+            Read More &gt;
+          </Button>
         </NavContainer>
       </SubtitleContainer>
     </MainContainer>
