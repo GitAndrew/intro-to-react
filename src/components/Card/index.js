@@ -16,6 +16,7 @@ const Card = ({
   backgroundImage,
 }) => {
   const [hover, setHover] = useState(false);
+  const [seen, setSeen] = useState(false);
 
   const onMouseEnter = () => {
     setHover(true);
@@ -25,11 +26,16 @@ const Card = ({
     setHover(false);
   };
 
+  const toggleSeen = () => {
+    setSeen(!seen);
+  };
+
   return (
     <MainContainer
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       backgroundImage={backgroundImage}
+      seen={seen}
     >
       <TitleContainer>
         <div style={{ color: "grey" }}>{originalTitle}</div>
@@ -41,7 +47,7 @@ const Card = ({
           <i>{description}</i>
         </SubtitleText>
         <NavContainer>
-          <Button>Mark as Seen</Button>
+          <Button onClick={toggleSeen}>Mark as Seen</Button>
           <Button>Read More &gt;</Button>
         </NavContainer>
       </SubtitleContainer>

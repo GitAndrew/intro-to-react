@@ -11,13 +11,15 @@ export const MainContainer = styled.div`
   font-family: "Work Sans", sans-serif;
   transition: 0.3s ease;
   :hover {
-    transform: scale(1.1);
+    transform: ${({ seen }) => (seen ? "none" : "scale(1.1)")};
     border: 1px solid #292f36;
-    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: ${({ seen }) =>
+      seen ? "none" : "2px 5px 10px rgba(0, 0, 0, 0.5)"};
   }
   overflow: hidden;
   background-size: 100% 100%;
   background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
+  opacity: ${({ seen }) => (seen ? "0.4" : "1")};
 `;
 
 export const TitleContainer = styled.div`
