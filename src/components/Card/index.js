@@ -47,7 +47,9 @@ const Card = ({
           <i>{description}</i>
         </SubtitleText>
         <NavContainer>
-          <Button onClick={() => toggleSeen(id)}>Mark as Seen</Button>
+          <Button onClick={() => toggleSeen(id)}>
+            {seen ? "Unmark as Seen" : "Mark as Seen"}
+          </Button>
           <Button
             onClick={() => {
               history.push(`/movies/${id}`);
