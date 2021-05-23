@@ -1,12 +1,13 @@
 import React from "react";
-import { Home } from "pages";
+import { Home, Movie } from "pages";
 import GlobalStyle from "./globalStyles";
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Home />
+      {/* <Home /> */}
+      <Movie />
     </>
   );
 };
