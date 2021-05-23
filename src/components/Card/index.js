@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   MainContainer,
   TitleContainer,
@@ -15,14 +15,28 @@ const Card = ({
   releaseDate,
   backgroundImage,
 }) => {
+  const [hover, setHover] = useState(false);
+
+  const onMouseEnter = () => {
+    setHover(true);
+  };
+
+  const onMouseLeave = () => {
+    setHover(false);
+  };
+
   return (
-    <MainContainer backgroundImage={backgroundImage}>
+    <MainContainer
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      backgroundImage={backgroundImage}
+    >
       <TitleContainer>
         <div style={{ color: "grey" }}>{originalTitle}</div>
         <div>{title}</div>
         <div>({releaseDate})</div>
       </TitleContainer>
-      <SubtitleContainer>
+      <SubtitleContainer hover={hover}>
         <SubtitleText>
           <i>{description}</i>
         </SubtitleText>

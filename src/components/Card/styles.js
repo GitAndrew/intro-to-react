@@ -33,7 +33,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const SubtitleContainer = styled.div`
-  height: 120px;
+  height: ${({ hover }) => (hover ? "120px" : "0px")};
   transition: 0.3s ease;
   width: 100%;
   color: white;
