@@ -89,8 +89,11 @@ class Home extends React.Component {
             filteredMovies.map((movie) => (
               <Card
                 key={movie.id}
+                originalTitle={movie.original_title}
                 title={movie.title}
                 description={movie.description}
+                releaseDate={movie.release_date}
+                backgroundImage={movie.cover}
               />
             ))
           )}

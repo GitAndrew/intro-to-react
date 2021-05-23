@@ -1,42 +1,37 @@
 import React from "react";
+import {
+  MainContainer,
+  TitleContainer,
+  SubtitleContainer,
+  SubtitleText,
+  NavContainer,
+  Button,
+} from "./styles";
 
-// Class Component
-// class Card extends React.Component {
-//   render() {
-//     return (
-//       <div
-//         style={{
-//           background: "white",
-//           display: "flex",
-//           flexDirection: "column",
-//           width: 300,
-//           height: 420,
-//           border: "1px solid #292f36",
-//         }}
-//       >
-//         <div>{this.props.title}</div>
-//         <div>{this.props.description}</div>
-//       </div>
-//     );
-//   }
-// }
-
-// Functional Component
-const Card = ({ title, description }) => {
+const Card = ({
+  originalTitle,
+  title,
+  description,
+  releaseDate,
+  backgroundImage,
+}) => {
   return (
-    <div
-      style={{
-        background: "white",
-        display: "flex",
-        flexDirection: "column",
-        width: 300,
-        height: 420,
-        border: "1px solid #292f36",
-      }}
-    >
-      <div>{title}</div>
-      <div>{description}</div>
-    </div>
+    <MainContainer backgroundImage={backgroundImage}>
+      <TitleContainer>
+        <div style={{ color: "grey" }}>{originalTitle}</div>
+        <div>{title}</div>
+        <div>({releaseDate})</div>
+      </TitleContainer>
+      <SubtitleContainer>
+        <SubtitleText>
+          <i>{description}</i>
+        </SubtitleText>
+        <NavContainer>
+          <Button>Mark as Seen</Button>
+          <Button>Read More &gt;</Button>
+        </NavContainer>
+      </SubtitleContainer>
+    </MainContainer>
   );
 };
 
