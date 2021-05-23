@@ -5,13 +5,6 @@ export const MainContainer = styled.div`
   flex-direction: column;
 `;
 
-export const Header = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  background: #716844;
-  width: 100%;
-`;
-
 export const Content = styled.div`
   display: grid;
   grid-template-rows: auto;
